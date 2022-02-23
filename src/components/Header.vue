@@ -1,5 +1,6 @@
 <template>
   <header>
+    <Logo />
     <div class="nav nav-pills">
       <!-- for반복문으로 navigations name 출력 -->
       <div
@@ -20,7 +21,12 @@
 </template>
 
 <script>
+import Logo from '~/components/Logo'
+
 export default {
+  components:{
+    Logo
+  },
   data(){
     return{
       //네비게이션 링크 데이터
@@ -42,3 +48,17 @@ export default {
   }
 }
 </script>
+
+
+<style lang="scss" scoped>
+header{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 0 40px;
+
+  .logo{
+    margin-right: 40px;
+  }
+}
+</style>

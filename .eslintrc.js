@@ -42,7 +42,8 @@ module.exports = {
         "Home",
         "About",
         "Movie",
-        "Header"
+        "Header",
+        "Logo"
       ]
     }]
   }
