@@ -35,6 +35,13 @@ module.exports = {
       },
       "svg":"always",
       "math":"always"
+    }],
+    //vue 이름 여러줄 룰 무시
+    "vue/multi-word-component-names": ["error", {
+      "ignores": [
+        "Home",
+        "About"
+      ]
     }]
   }
 }
