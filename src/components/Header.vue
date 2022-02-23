@@ -1,5 +1,6 @@
 <template>
   <header>
+    <!-- LoGo 컴포넌트 -->
     <Logo />
     <div class="nav nav-pills">
       <!-- for반복문으로 navigations name 출력 -->

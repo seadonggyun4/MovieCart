@@ -43,7 +43,8 @@ module.exports = {
         "About",
         "Movie",
         "Header",
-        "Logo"
+        "Logo",
+        "Headline"
       ]
     }]
   }
