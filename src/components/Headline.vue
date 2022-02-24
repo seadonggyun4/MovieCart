@@ -17,20 +17,22 @@
 
 .container{
   padding-top: 50px;
-}
 
-h1{
-  line-height: 1;
-  font-family: 'Oswald', sans-serif;
-  font-size: 80px;
+  h1{
+    line-height: 1;
+    font-family: 'Oswald', sans-serif;
+    font-size: 80px;
 
-  span{
-    color: $primary;
+    span{
+      color: $primary;
+    }
   }
+
+  p{
+    margin: 30px 0;
+    color: $gray-600;
+  }
+
 }
 
-p{
-  margin: 30px 0;
-  color: $gray-600;
-}
 </style>

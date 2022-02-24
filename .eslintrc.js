@@ -44,7 +44,8 @@ module.exports = {
         "Movie",
         "Header",
         "Logo",
-        "Headline"
+        "Headline",
+        "Search"
       ]
     }]
   }
