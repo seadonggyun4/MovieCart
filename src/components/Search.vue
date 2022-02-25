@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from 'axios' // http 통신 도와주는 모듈 
+
 
 export default {
   data(){
@@ -82,23 +82,15 @@ export default {
     }
   },
   methods:{
-    //Search Movie(비동기 동작을 위한 async)
+    //store 의 movie 모듈 내부 searchMovies actions 실행
+    // payload의 데이터 에 양방향 바인딩으로 받아온 data()내부 데이터를 전달.
     async apply(){
-      const OMDB_API_KEEY = '7035c60c'
-      
-      // [리퀘스트]
-      // omdb api 의 영화데이터 리퀘스트 주소(반드시 https로)
-      // axios 패키지를 활용해 받는다.
-      // axios.get()으로 받은 주소 뒤의 파라메터는 "&파라매터" 형식으로 작성해야 한다.
-      // await는 반환받을때까지 기다린다.
-
-      // [리스폰스]
-      // 반환받은 값은 res 에 저장한다.
-
-      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEEY}&s=${this.title}&type=${this.type}&y=${this.year}&page=1`) 
-
-      
-      console.log(res)
+      this.$store.dispatch('movie/searchMovies',{
+        title: this.title,
+        type: this.type,
+        number: this.number,
+        year: this.year
+      })
     }
   }
 }
