@@ -31,7 +31,7 @@ export default{
   actions:{
     // context는 state, getters, mutations를 활용할수 있는 내용
     // payload는 searchMovies를 활용할때 인수로 들어온 특정한 데이터 활용
-    async searchMovies(context, payload){
+    async searchMovies({state, commit}, payload){
       // payload 구조분해
       // search 컴포넌트의 aply()매서드를 통해 전달받은 데이터가 내부로 들어간다.
       const {title, type, number, year } = payload
@@ -51,15 +51,34 @@ export default{
       // payload로 전달받은 데이터를 채워 넣는다.
       const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEEY}&s=${title}&type=${type}&y=${year}&page=1`) 
 
-      
       const {Search, totalResults} = res.data
       //state에 데이터를 넣기 위함
       //commit으로 updateState 연결
-      // Search는 omdb에서 받은 영화 정보들
+      // Search는 omdb에서 받은 영화 정보들, totalResults는 영화 갯수(string 타입)
       // commit 안에 mutations을 작성할때 띄어쓰기 하나도 들어가면 안된다.
-      context.commit('updataState', {
+      commit('updataState', {
         movies: Search
       })
+
+      // totalResults를 10진법의 숫자로 변환
+      const total = parseInt(totalResults, 10)
+      // Math.ceil()는 올림 함수
+      const pageLength = Math.ceil(total / 10)
+
+      if(pageLength > 1){
+
+        for(let page = 2; page <= pageLength; page += 1){
+          if(page > (number / 10)){
+            break
+          }
+          const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEEY}&s=${title}&type=${type}&y=${year}&page=${page}`) 
+          const {Search} = res.data
+
+          commit('updataState', {
+            movies: [...state.moives, ...Search]
+          })
+        }
+      }
     }
   } 
 }
