@@ -19,7 +19,8 @@ export default createRouter({
       path: '/about',
       component: About
     },{
-      path: '/movie',
+      // 파라메터 값 id
+      path: '/movie/:id',
       component: Movie
     }
   ]
