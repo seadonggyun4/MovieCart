@@ -31,7 +31,7 @@ export default {
 @import '~/scss/main.scss';
 
 .movie{
-  $width: 168px;
+  $width: 200px;
 
   position: relative;
   margin: 10px;
@@ -56,35 +56,50 @@ export default {
     transition: all .2s ease-in-out;
   }
 
-  &:hover::after{
-    border: 6px solid $primary;
-    opacity: 1;
-  }
-
   .info{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     bottom: 0;
     left: 0;
     padding: 14px;
+    height: 150px;
     width: 100%;
     font-size: 14px;
     text-align: center;
-    background-color: rgba($black, .3);
-    //backdrop-filter: blur() -> 흐림처리
-    backdrop-filter: blur(10px);
+    background: linear-gradient(transparent, #000);
+    transition: all .2s ease-in-out;
+    opacity: 0;
 
     .year{
+      margin-bottom: 10px;
       font-weight: 700;
       color: $primary;
     }
 
     .title{
+      margin-bottom: 10px;
+      width: 100%;
       color: $white;
       // white-space 는 공백문자(띄어쓰기, 탭) 처리 속성
       white-space: nowrap;
       // text-overflow: ellipsis -> ... 표시(white-space 와 같이 사용해야 정상작동)
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+  }
+
+  &:hover{
+
+    .info{
+      opacity: 1;
+    }
+
+    &::after{
+      border: 6px solid $primary;
+      opacity: 1;
     }
   }
 }

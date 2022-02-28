@@ -9,7 +9,7 @@ export default{
   */
   state: () => ({
     movies: [],
-    message: '',
+    message: 'Search for the movie title!',
     loading: false
   }), 
   /*
@@ -42,8 +42,20 @@ export default{
     payload는 searchMovies를 활용할때 인수로 들어온 특정한 데이터 활용
   */
   actions:{
-
     async searchMovies({state, commit}, payload){
+      // state.loading 이 true일 경우 함수 실행 종료
+      // 사용자가 searchMovies 함수가 동작중일때 여러번 실행하는 것을 방지
+      if(state.loading){
+        return
+      }
+
+      // 검색 시작되면 메시지 초기화
+      // 에러 메시지가 있다면 movieList 컴포넌트에서 movieitem을 출력 안하기 때문에 초기화
+      commit('updateState',{
+        message:'',
+        loading: true //로딩 시작
+      })
+
       try{
         // payload로 전달받은 데이터를 채워 넣는다.
         const res = await _fetchMovie({
@@ -86,6 +98,11 @@ export default{
         commit('updateState', {
           movies: [],
           message : message
+        })
+      } finally{
+        commit('updateState',{
+          //로딩 끝
+          loading: false
         })
       }
     }
