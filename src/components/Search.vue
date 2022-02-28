@@ -58,7 +58,7 @@ export default {
         },
         {
           name:'number',//아이템 한번에 볼 숫자
-          items: [10, 20, 30]
+          items: [10, 20, 30, 40, 50, 60, 70, 80, 100]
         },
         {
           name:'year',//연도 => 비어있다.
