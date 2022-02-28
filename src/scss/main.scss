@@ -1,5 +1,11 @@
 // Default variable overrides
-$primary: #FDC000;
+/*
+ [ 부트스트랩 커스텀 ] 
+ !default 플래그를 더한 변수 정의문 예시가 있습니다. 이것은 $content 변수에 (a)값이 이미 있다면 무시하고, (b)값이 없다면 작성한 값을 할당하라는 의미
+*/
+
+//$primary: #FDC000;
+$primary: #3EAF7C;
 
 
 // Required

@@ -1,5 +1,19 @@
 <template>
-  <div>{{ movie.Title }}</div>
+  <!-- style바인딩을 통해 배경으로 포스터 출력 -->
+  <div
+    class="movie"
+    :style="{backgroundImage:`url(${movie.Poster})`}">
+    <div class="info">
+      <!-- 연도 -->
+      <div class="year">
+        {{ movie.Year }}
+      </div>
+      <!-- 타이틀 -->
+      <div class="title">
+        {{ movie.Title }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,3 +26,66 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~/scss/main.scss';
+
+.movie{
+  $width: 168px;
+
+  position: relative;
+  margin: 10px;
+  width: $width;
+  height: $width * 3/2;
+  cursor: pointer;
+  background-color: $gray-400;
+  background-repeat: no-repeat;
+  // cover -> width, height 중 더 넓은 요소에 맞춰 출력 되게
+  background-size: cover;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; 
+    opacity: 0;
+    transition: all .2s ease-in-out;
+  }
+
+  &:hover::after{
+    border: 6px solid $primary;
+    opacity: 1;
+  }
+
+  .info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 14px;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    background-color: rgba($black, .3);
+    //backdrop-filter: blur() -> 흐림처리
+    backdrop-filter: blur(10px);
+
+    .year{
+      font-weight: 700;
+      color: $primary;
+    }
+
+    .title{
+      color: $white;
+      // white-space 는 공백문자(띄어쓰기, 탭) 처리 속성
+      white-space: nowrap;
+      // text-overflow: ellipsis -> ... 표시(white-space 와 같이 사용해야 정상작동)
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+</style>
