@@ -45,7 +45,8 @@ module.exports = {
         "Header",
         "Logo",
         "Headline",
-        "Search"
+        "Search",
+        "Footer"
       ]
     }]
   }
