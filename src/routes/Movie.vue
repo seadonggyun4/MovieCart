@@ -30,11 +30,12 @@
       class="movie-details">
       <div
         :style="{backgroundImage:`url(${requestDiffSizeImage(theMovie.Poster)})`}"
-        class="poster"></div>
-      <!-- 로딩애니메이션 -->
-      <Loader
-        v-if="imageLoading"
-        absolute="true" />
+        class="poster">
+        <!-- 로딩애니메이션 -->
+        <Loader
+          v-if="imageLoading"
+          :absolute="true" />
+      </div>
       <div class="specs">
         <div class="title">
           {{ theMovie.Title }} 
@@ -115,12 +116,17 @@ export default {
   methods:{
     // 이미지 SX300부분을 다른 사이즈로 변경하는 메서드
     requestDiffSizeImage(url, size = 700){
-      const src = url.replace('SX300', `SX${size}`)
-      this.$loadImage(src)
-        .then(()=>{
-          this.imageLoading = false
-        })
-      return src
+      if (!url || url === 'N/A') {
+        this.imageLoading = false
+        return ''
+      } else{
+        const src = url.replace('SX300', `SX${size}`)
+        this.$loadImage(src)
+          .then(()=>{
+            this.imageLoading = false
+          })
+        return src
+      }
     }
   }
 }

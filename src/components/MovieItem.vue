@@ -1,8 +1,10 @@
 <template>
   <!-- style바인딩을 통해 배경으로 포스터 출력 -->
-  <div
+  <!-- 각각의 무비 아이템은 RouterLink를 통해 movie.imdbID가 있는 주소로 이동가능 -->
+  <RouterLink
     class="movie"
-    :style="{backgroundImage:`url(${movie.Poster})`}">
+    :style="{backgroundImage:`url(${movie.Poster})`}"
+    :to="`/movie/${movie.imdbID}`">
     <!-- 로딩애니메이션 -->
     <Loader
       v-if="imageLoading"
@@ -18,7 +20,7 @@
         {{ movie.Title }}
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <script>
@@ -47,8 +49,16 @@ export default {
     //이미지 초기화 메서드 
     // -> img태그 생성 -> img의 src에 포스터 url 연결 -> img 가 load 되면 imgeLoading 값 false로 바꾼다.
     async init(){
-      await this.$loadImage(this.movie.Poster)
-      this.imageLoading = false
+      const poster = this.movie.Poster
+
+      if(!poster || poster === 'N/A'){
+        this.imageLoading = false
+      } else{
+
+        await this.$loadImage(poster)
+        this.imageLoading = false
+      }
+
     }
   }
 }

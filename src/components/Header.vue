@@ -10,9 +10,11 @@
         class="nav-item">
         <!-- 라우터 링크 to문법으로 각 컴포넌트 주소 연결 -->
         <!-- active-class 는 active 되었을때 클래스명을 지정 -->
+        <!-- :class="{active: isMatch(nav.path)}" 은 isMatch 매서드를 통해 반환받은 값에 따라 active 클래스를 활성화 한다. -->
         <RouterLink
           :to="nav.href"
           active-class="active"
+          :class="{active: isMatch(nav.path)}"
           class="nav-link">
           {{ nav.name }}
         </RouterLink>
@@ -38,13 +40,25 @@ export default {
         },
         {
           name:'Movie',
-          href:'/movie/tt4520988'
+          href:'/movie/tt4520988',
+          path: /^\/movie/ // '/movie' 시작하는 경로가 movie 인지확인.
         },
         {
           name:'About',
           href:'/about'
         },
       ]
+    }
+  },
+  methods: {
+    isMatch(path){
+      if(!path){
+        return false
+      } else{
+        // path와 this.$route.fullPath 가 일치하는지 test한다.
+        // 결과값은 boolean 데이터로 반환
+        return path.test(this.$route.fullPath) 
+      }
     }
   }
 }
