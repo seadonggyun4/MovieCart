@@ -3,6 +3,11 @@
   <div
     class="movie"
     :style="{backgroundImage:`url(${movie.Poster})`}">
+    <!-- 로딩애니메이션 -->
+    <Loader
+      v-if="imageLoading"
+      :size="1.5"
+      :absolute="true" />
     <div class="info">
       <!-- 연도 -->
       <div class="year">
@@ -17,11 +22,33 @@
 </template>
 
 <script>
+import Loader from '~/components/Loader.vue'
+
 export default {
+  components:{
+    Loader
+  },
   props: {
     movie:{
       type: Object,
       default: () => ({})
+    }
+  },
+  data(){
+    return{
+      imageLoading: true
+    }
+  },
+  mounted(){
+    //movieItem 이 mounted 되었을때 init()메서드 실행
+    this.init()
+  },
+  methods:{
+    //이미지 초기화 메서드 
+    // -> img태그 생성 -> img의 src에 포스터 url 연결 -> img 가 load 되면 imgeLoading 값 false로 바꾼다.
+    async init(){
+      await this.$loadImage(this.movie.Poster)
+      this.imageLoading = false
     }
   }
 }
@@ -42,6 +69,7 @@ export default {
   background-repeat: no-repeat;
   // cover -> width, height 중 더 넓은 요소에 맞춰 출력 되게
   background-size: cover;
+  background-position: center;
   border-radius: 4px;
   overflow: hidden;
 

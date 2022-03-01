@@ -6,9 +6,7 @@
       :class="{'no-result': !movies.length}"
       class="inner">
       <!-- 로딩애니메이션 -->
-      <div
-        v-if="loading"
-        class="spinner-border text-primary"></div>
+      <Loader v-if="loading" />
       <!-- 에러메시지 여부에 따라 메시지가 있으면 출력 -->
       <div
         v-if="message"
@@ -33,10 +31,12 @@
 
 <script>
 import MovieItem from '~/components/MovieItem.vue'
+import Loader from '~/components/Loader.vue'
 
 export default {
   components:{
-    MovieItem
+    MovieItem,
+    Loader
   },
   computed:{
     movies(){
