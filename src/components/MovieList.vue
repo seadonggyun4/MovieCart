@@ -57,7 +57,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~/scss/main.scss';
 
 .container{
   margin:30px auto;

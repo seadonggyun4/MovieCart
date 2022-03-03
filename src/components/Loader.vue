@@ -51,5 +51,10 @@ export default {
   &.fixed {
     position: fixed;
   }
+
+  &.text-primary{
+  color: $primary !important; 
+  }
+
 }
 </style>

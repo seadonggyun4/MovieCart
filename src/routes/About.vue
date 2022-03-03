@@ -67,7 +67,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~/scss/main.scss';
 
 .about{
   text-align: center;

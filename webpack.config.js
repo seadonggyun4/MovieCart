@@ -59,7 +59,14 @@ module.exports = {
           'vue-style-loader', // vue파일의 style에서 작성된 코드를 해석
           'css-loader', //js에서 css를 해석하도록 한다.
           'postcss-loader',
-          'sass-loader'
+          // additionalData 옵션 -> 모든 scss 파일 앞단에 설정한 코드가 자동으로 삽입되도록 한다.
+          // vue파일 내부 style 태그 lnag을 scss로 작성하면 자동으로 삽입된다. 
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: '@import "~/scss/main";'
+            }
+          }
         ]
       },
       {

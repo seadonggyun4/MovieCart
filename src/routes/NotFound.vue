@@ -10,7 +10,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~/scss/main.scss';
 
 .not-found{
   margin: auto;

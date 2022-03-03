@@ -85,7 +85,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~/scss/main.scss';
 
 header{
   position: relative;
