@@ -18,6 +18,10 @@ export default {
     Headlin,
     Search,
     MovieList
+  },
+  created(){
+    //store -> mutations -> movie -> resetMovies 
+    this.$store.commit('movie/resetMovies')
   }
 }
 </script>

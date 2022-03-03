@@ -1,6 +1,8 @@
 import axios from 'axios' // http 통신 도와주는 모듈 
 import _uniqBy from 'lodash/uniqBy'
 
+const _defaultMessage = '찾고싶은 영화를 검색해 보세요!!'
+
 export default{
   //모듈화 가능하다는 의미
   namespaced: true, 
@@ -9,7 +11,7 @@ export default{
   */
   state: () => ({
     movies: [],
-    message: '찾고싶은 영화를 검색해 보세요!!',
+    message: _defaultMessage,
     loading: false,
     theMovie: {}
   }), 
@@ -33,7 +35,9 @@ export default{
       })
     },
     resetMovies(state){
-      state.moives = []
+      state.movies = [],
+      state.message = _defaultMessage,
+      state.loading = false
     }
   }, 
   /*

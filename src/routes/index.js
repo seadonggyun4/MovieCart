@@ -31,5 +31,9 @@ export default createRouter({
       path: '/:pathMatch(.*)',
       component: NotFound
     }
-  ]
+  ],
+  // router를 통해 페이지 이동시 scroll 위치 항상 top으로 유지
+  scrollBehavior(){
+    return {top: 0}
+  }
 })
