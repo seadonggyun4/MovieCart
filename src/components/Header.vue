@@ -20,6 +20,14 @@
         </RouterLink>
       </div>
     </div>
+    <!-- RouterLink로 이동해도 되지만 click 이벤트 발생시 toAbout 매서드 실행 -->
+    <div
+      class="user"
+      @click="toAbout">
+      <img
+        :src="image"
+        :alt="name" />
+    </div>
   </header>
 </template>
 
@@ -50,6 +58,14 @@ export default {
       ]
     }
   },
+  computed:{
+    image(){
+      return this.$store.state.about.image
+    },
+    name(){
+      return this.$store.state.about.name
+    }
+  },
   methods: {
     isMatch(path){
       if(!path){
@@ -59,6 +75,9 @@ export default {
         // 결과값은 boolean 데이터로 반환
         return path.test(this.$route.fullPath) 
       }
+    },
+    toAbout(){
+      this.$router.push('/about')
     }
   }
 }
@@ -66,7 +85,10 @@ export default {
 
 
 <style lang="scss" scoped>
+@import '~/scss/main.scss';
+
 header{
+  position: relative;
   display: flex;
   align-items: center;
   height: 70px;
@@ -74,6 +96,37 @@ header{
 
   .logo{
     margin-right: 40px;
+  }
+  .user{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    margin: auto;
+    padding: 6px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $gray-200;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+
+    img{
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    &:hover{
+      //darken은 scss 내장함수 -> 더 어둡게 색상을 바꾼다.
+      background-color: darken($color: $gray-200, $amount: 10%);
+    }
+  }
+
+  @include media-breakpoint-down(sm){
+    .nav{
+      display: none;
+    }
   }
 }
 </style>

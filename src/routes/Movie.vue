@@ -265,6 +265,58 @@ export default {
     }
   }
 
+  @include  media-breakpoint-down(xl){
+    .movie-details{
+      .poster{
+        margin-right: 40px ;
+        width: 300px;
+        height: 300px * 3/2;
+      }
+    }
+  }
+
+  @include  media-breakpoint-down(lg){
+    .movie-details{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  
+      .poster{
+        margin-right: 0;
+        margin-bottom: 40px;
+      }
+
+      .specs{
+        
+        .plot{
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @include  media-breakpoint-down(md){
+    .movie-details{
+
+      .specs{
+        
+        .title{
+          font-size: 50px;
+        }
+  
+        .ratings{
+          
+          .rating-wrap{
+            display: block;
+  
+            .rating{
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 </style>
