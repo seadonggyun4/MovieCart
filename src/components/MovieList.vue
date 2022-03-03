@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import MovieItem from '~/components/MovieItem.vue'
 import Loader from '~/components/Loader.vue'
 
@@ -39,18 +40,12 @@ export default {
     Loader
   },
   computed:{
-    movies(){
-      // stroe 의 state(데이터) -> movie모듈 -> movies 의 값
-      return this.$store.state.movie.movies
-    },
-    message(){
-      // stroe 의 state(데이터) -> movie모듈 -> message 의 값
-      return this.$store.state.movie.message
-    },
-    loading(){
-       // stroe 의 state(데이터) -> movie모듈 -> loading 의 값
-      return this.$store.state.movie.loading
-    }
+    // stroe 의 state(데이터) -> movie모듈 -> 데이터(movies, message, loading)
+    ...mapState('movie',[
+      'movies',
+      'message',
+      'loading'
+    ])
   }
 }
 </script>

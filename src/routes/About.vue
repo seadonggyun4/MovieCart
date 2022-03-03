@@ -20,6 +20,7 @@
 
 
 <script>
+import { mapState } from 'vuex'
 import Loader from '~/components/Loader.vue'
 
 export default {
@@ -32,26 +33,14 @@ export default {
     Loader
   },
   computed:{
-    image(){
-      //store -> state -> about -> image데이터
-      return this.$store.state.about.image
-    },
-    name(){
-      //store -> state -> about -> name데이터
-      return this.$store.state.about.name
-    },
-    email(){
-      //store -> state -> about -> email데이터
-      return this.$store.state.about.email
-    },
-    blog(){
-      //store -> state -> about -> blog데이터
-      return this.$store.state.about.blog
-    },
-    phone(){
-      //store -> state -> about -> phone데이터
-      return this.$store.state.about.phone
-    }
+    //store -> state -> about -> 데이터(image,name,email,blog,phone)
+    ...mapState('about',[
+      'image',
+      'name',
+      'email',
+      'blog',
+      'phone'
+    ])
   },
   methods: {
     async init(){
@@ -92,6 +81,10 @@ export default {
     margin-bottom: 20px;
     font-family: 'Oswald',sans-serif;
     font-size: 40px;
+  }
+
+  div{
+    margin:20px
   }
 }
 </style>

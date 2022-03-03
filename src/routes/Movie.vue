@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import Loader from '~/components/Loader.vue'
 
 export default {
@@ -97,14 +98,11 @@ export default {
     }
   },
   computed:{
-    theMovie(){
-      //store -> state데이터 -> movie모듈 -> theMovie 값
-      return this.$store.state.movie.theMovie
-    },
-    loading(){
-      //store -> state데이터 -> movie모듈 -> loading 값
-      return this.$store.state.movie.loading
-    }
+    //store -> state데이터 -> movie모듈 -> 데이터(theMovie, loading)
+    ...mapState('movie',[
+      'theMovie',
+      'loading'
+    ])
   },
   created(){
     // vue store의 searchMovieWithId 실행
