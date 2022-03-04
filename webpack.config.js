@@ -105,6 +105,8 @@ module.exports = {
 
   //개발용 서버의 호스트를 설정
   devServer: {
-    host: 'localhost'
+    host: 'localhost',
+    port: 8079,
+    hot: true
   }
 }
