@@ -48,7 +48,9 @@ module.exports = {
         "Headline",
         "Search",
         "Footer",
-        "Loader"
+        "Loader",
+        "Child",
+        "Parent"
       ]
     }]
   }
