@@ -1,8 +1,9 @@
 module.exports = {
   env:{
-    //코드 검사를 브라우저, node.js 에서 진행
+    //코드 검사를 브라우저, node.js, jset.js 에서 진행
     browser:true,
     node:true,
+    jest: true
   },
   extends: [
     //코드검사를 진행할 규칙
