@@ -1,5 +1,7 @@
 # MovieCart
 
+https://user-images.githubusercontent.com/84368302/157015508-f917f204-1b70-460f-a035-8bdaf475c914.mp4
+
 <br>
 <br>
 <br>
@@ -28,6 +30,8 @@ OMDB API를 이용해 영화 데이터를 받아온뒤 , 사용자들이 검색�
 <br>
 
 # 🔧 상태관리
+![vuex](https://user-images.githubusercontent.com/84368302/157015636-6fa34193-a3a2-468e-9d16-85a6c21cd49e.PNG)
+
 - vuex 를 사용해 필요한 데이터를 movie, about 데이터 모듈로 나눠 필요한 컴포넌트에 사용하고있는 구조 이다.
 - vuex를 사용해 상태관리를 진행하면 복잡하게 얽힌 컴포넌트간 데이터 통신이, 독립적인 store에 연결해 관리하면 되기때문에 편리해진다.
 
@@ -199,6 +203,9 @@ async function _fetchMovie(payload){
 
 
 # 🔧 서버리스 통신(Fass)
+![서버리스 함수 구조](https://user-images.githubusercontent.com/84368302/157015885-84486668-4ae5-458e-a7af-4d2fbf0ea0de.PNG)
+
+
 - 서버리스 함수란 서버가 존재하지 않는다는 뜻이 아니라 서버를 직접 관리할 필요가 없는 구조
 - 영화 검색 api 키를 netlify(AWS의 Lamda) 와 같은 호스팅 서버의 서버리스 함수를 통해 보관했다가 사용자에게 데이터를 넘긴다.
 - 사용자에게 넘어간 데이터에는 인증키가 없기때문에, 해커가 사용자의 컴퓨터를 해킹하더라도 api키 정보를 알아낼수 없다.
