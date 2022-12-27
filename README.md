@@ -18,7 +18,7 @@ OMDB API를 이용해 영화 데이터를 받아온뒤 , 사용자들이 검색�
 | ------ | --------------- | --------------- | 
 | webpack    | webpack을 활용한 모듈 번들링 | ✔   |
 | scss    | scss를 활용한 component단위 style 처리 | ✔   |
-| vue    | component단위의 vue파일 생성 | ✔   |
+| vue2    | component단위의 vue파일 생성 | ✔   |
 |     | vue-router를 통한 SPA 디자인 패턴 적용 | ✔   |
 | vuex | vuex의 store 기능을 통한 상태 관리 | ✔   |
 |      | store의 데이터 모듈은 movie,about으로 구성 | ✔   |
